@@ -545,7 +545,8 @@ protected:
 
 public:
     // login related
-    void loginWorld(std::string_view account, std::string_view password, std::string_view worldName, std::string_view worldHost, int worldPort, std::string_view characterName, std::string_view authenticatorToken, std::string_view sessionKey);
+    void loginWorld(std::string_view account, std::string_view password, std::string_view worldName, std::string_view worldHost, int worldPort, std::string_view characterName, std::string_view authenticatorToken, std::string_view sessionKey, const std::string_view& recordTo);
+    void playRecord(const std::string_view& file);
     void cancelLogin();
     void forceLogout();
     void safeLogout();
@@ -841,7 +842,7 @@ private:
     uint16_t m_mapUpdatedAt{ 0 };
     std::pair<uint16_t, Timer> m_mapUpdateTimer = { true, Timer{} };
 
-    uint8_t m_walkMaxSteps = 1;
+    uint8_t m_walkMaxSteps = { 1 };
     uint8_t m_openPvpSituations{ 0 };
     uint16_t m_serverBeat{ 50 };
     uint16_t m_pingDelay{ 1000 };
